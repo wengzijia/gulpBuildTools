@@ -1,0 +1,159 @@
+// 清除浮动高度为0  
+@mixin clearfix {
+    /*伪元素是行内元素 正常浏览器清除浮动方法*/
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    /*解决浏览器兼容问题*/
+    visibility: hidden;
+    /*解决浏览器兼容问题*/
+}
+
+// IE清除浮动
+@mixin IEclearfix {
+    *zoom: 1;
+    /*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
+}
+
+// 单行显示省略号
+@mixin text-ellipsisl1 {
+    /*1.先强制一行内显示文本*/
+    white-space: nowrap;
+    /*2.超出的部分隐藏*/
+    overflow: hidden;
+    /*3.文字用省略号替代超出的部分*/
+    text-overflow: ellipsis;
+}
+
+
+// 两行显示省略号
+@mixin text-ellipsisl2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /*弹性伸缩盒子模型显示*/
+    display: -webkit-box;
+
+    /*限制在一个块元素显示的文本的行数*/
+    -webkit-line-clamp: 2;
+
+    /*设置或检索伸缩盒对象的子元素的排列方式*/
+    -webkit-box-orient: vertical;
+}
+
+// root代表网页的根标签 html
+@mixin root {
+    /* 定义css颜色变量 */
+    --theme-color: rgb(17, 96, 170);
+}
+
+// 使用通配符选择器定义CSS样式，清除所有HTML标记的默认边距。
+@mixin reset {
+    padding: 0;
+    margin: 0;
+}
+
+// 弹性布局水平垂直居中
+@mixin flex_c_c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// 绝对定位水平垂直居中(定位（子绝父相）,缺点：必须知道子元素的宽高)
+@mixin absolute_center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px;
+    margin-left: -25px;
+}
+
+// 定位（transform）水平垂直居中
+@mixin transform {
+    transform: translate3d(-50%, -50%, 0);
+}
+
+// li清除冒号
+@mixin liclear {
+    list-style-type: none;
+}
+
+// a链接清除下划线
+@mixin aclear {
+    text-decoration: none;
+}
+
+// 去除轮廓
+@mixin  outline {
+    outline: 0;
+}
+
+// 去除边框
+@mixin broder {
+    border: 0;
+}
+
+// 0.5像素的水平线  
+@mixin linePX {
+    width: 500px;
+    height: 1px;
+    background-color: #ccc;
+    transform-origin: bottom center;
+    transform: scaleY(0.5);
+} 
+
+// 0.5像素的边框 
+ @mixin box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    /* background-color: red; */
+    margin: 50px auto;
+}
+// ::after 要给伪元素设
+@mixin boxPX {
+    content: '';
+    position: absolute;
+    top:0;
+    left:0;
+    width: 200%;
+    height: 200%;
+    border: 1px solid #ccc;
+    /* background-color: green; */
+    transform-origin: 0 0;
+    transform: scale(0.5);
+    box-sizing: border-box;
+}
+
+ul{
+    width: 200px;
+    height: 100px;
+    li{
+        list-style-type: none;
+        @include boxPX
+    }
+}
+
+body{
+    background-image: linear-gradient(to right, rgb(250, 244, 244) , rgb(0, 132, 255));}
+
+h1{
+    color: red;
+}
+h2{
+    color: yellow;
+}
+h3{
+    color: blue;
+}
+h4{
+    color: green;
+}
+h5{
+    color:cyan ;
+}
+h6{
+    color: purple;
+}
